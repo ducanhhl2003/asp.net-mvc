@@ -1,0 +1,29 @@
+﻿@model IEnumerable<moi.Models.EF.Order>
+@{
+    ViewBag.Title = "Lịch sử mua hàng";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
+@if (Model != null)
+{
+    var i = 0;
+    <h2>Lịch Sử Mua Hàng<</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>STT</td>
+                <td>Mã Đơn Hàng</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                
+                <tr>
+                    <td>@i</td>
+                    <td>@item.Code</td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+}

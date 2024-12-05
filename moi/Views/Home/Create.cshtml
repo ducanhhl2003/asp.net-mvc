@@ -1,0 +1,78 @@
+﻿@model moi.Models.EF.Customer
+
+<button id="chatButton" onclick="toggleChat()">
+    <img id="chatIcon" src="~/Content/assets/images/message-icon-512x463-tqzmxrt7.png" style="height: 30px; width: 30px;" , width="" " alt="Chat">
+</button>
+<!-- Form chat -->
+<div class="row mb-2">
+    <div class="col-sm-6">
+        <div id="chatForm" style="display: none;">
+            <div class="card-body p-0">
+                <div class="bs-stepper linear">
+                    <!--<div class="bs-stepper-header" role="tablist">-->
+                    <!-- your steps here -->
+                    <!--<div class="step active" data-target="#logins-part">
+                            <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger" aria-selected="true">
+                                <span class="bs-stepper-circle">1</span>
+                                <span class="bs-stepper-label">Logins</span>
+                            </button>
+                        </div>
+                        <div class="line"></div>
+                        <div class="step" data-target="#information-part">
+                            <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger" aria-selected="false" disabled="disabled">
+                                <span class="bs-stepper-circle">2</span>
+                                <span class="bs-stepper-label">Various information</span>
+                            </button>
+                        </div>
+                    </div>-->
+                    <div class="bs-stepper-content">
+                        @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <!-- your steps content here -->
+                        <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+                            <p>Nếu bạn có bất cứ thắc mắc nào gửi vào đây chúng tôi sẽ phản hồi sớm nhất có thể</p>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Họ và tên</label>
+                                <input type="text" class="form-control" id="name" placeholder="Nhập họ tên">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Nhập Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Tin nhắn:</label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Gửi</button>
+                            <button class="btn btn-danger" onclick="toggleChat()">Thoát</button>
+
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var isChatVisible = false; // Biến để kiểm tra trạng thái của thanh chat
+
+    function toggleChat() {
+        var chatForm = document.getElementById("chatForm");
+        var chatIcon = document.getElementById("chatIcon");
+        if (!isChatVisible) { // Nếu thanh chat không hiển thị
+            chatForm.style.display = "block"; // Hiển thị thanh chat
+            /*chatIcon.src = "minus-icon.png"; // Thay đổi hình ảnh của nút chat thành icon dấu trừ*/
+        } else { // Nếu thanh chat đã hiển thị
+            chatForm.style.display = "none"; // Ẩn thanh chat
+            /*chatIcon.src = "~/Content/assets/images/message-icon-512x463-tqzmxrt7.png";*/ // Thay đổi hình ảnh của nút chat thành icon dấu cộng
+        }
+        isChatVisible = !isChatVisible; // Cập nhật trạng thái của thanh chat
+    }
+</script>
+
+
+
+
